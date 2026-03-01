@@ -84,3 +84,34 @@ SPEC-1-India-Remote-IT-Job-Board
 └── target/
 ```
 
+## Domain Enums
+Enums are used instead of raw strings to:
+* Prevent invalid values
+* Improve type safety
+* Make business logic clearer
+* Avoid magic strings
+
+### ExperienceLevel
+Defined allowed job experience categories
+
+### RemoteType
+Defines allowed remote job types
+
+### JobStatus
+Controls moderation workflow
+* PENDING &rarr; Awaiting approval
+* APPROVED &rarr; Publicly visible
+* REJECTED &rarr; Not visible \
+Enums improve long-term maintainablity
+
+## Entity Layer
+The entity layer represents database tables using JPA annotations
+
+#### Key Design Decisions
+* UUID used for all primary keys (safer than sequential IDs).
+* Enum fields stored as STRING (not ordinal) to avoid corruption if enum order changes.
+* Many-to-Many relationship between Job and TechStack.
+* LAZY loading used for category to avoid unnecessary joins.
+
+#### Why Builder Pattern
+Lombok ```@Builder``` improves object construction readability and reduces constructor clutter.
