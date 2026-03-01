@@ -1,1 +1,0 @@
-# SPEC-1-India-Remote-IT-Job-Board
